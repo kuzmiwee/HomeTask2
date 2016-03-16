@@ -1,5 +1,7 @@
 package org.sourceit;
 
+import java.util.Random;
+
 public class HomeTask2 {
 
     /**
@@ -9,7 +11,15 @@ public class HomeTask2 {
      * @return бинарная форма числа
      */
     public static long decimalToBinary(int number) {
-        return -1;
+        long numberBinary;
+        int numberDecimal = number;
+
+        if (numberDecimal < 0) {
+            return (-1);
+        }
+
+        numberBinary = Integer.parseInt(Integer.toBinaryString(numberDecimal));
+        return (numberBinary);
     }
 
     /**
@@ -19,7 +29,15 @@ public class HomeTask2 {
      * @return октальная форма числа
      */
     public static long decimalToOctal(int number) {
-        return -1;
+        long numberOctal;
+        int numberDecimal = number;
+
+        if (numberDecimal < 0) {
+            return (-1);
+        }
+
+        numberOctal = Integer.parseInt(Integer.toOctalString(numberDecimal));
+        return (numberOctal);
     }
 
     /**
@@ -29,7 +47,15 @@ public class HomeTask2 {
      * @return хексовая форма числа
      */
     public static long decimalToHex(int number) {
-        return -1;
+        long numberHex;
+        int numberDecimal = number;
+
+        if (numberDecimal < 0) {
+            return (-1);
+        }
+
+        numberHex = Integer.parseInt(Integer.toHexString(numberDecimal));
+        return (numberHex);
     }
 
     /**
@@ -39,7 +65,15 @@ public class HomeTask2 {
      * @return десятичное число
      */
     public static int binaryToDecimal(long binary) {
-        return -1;
+        int numberDecimal;
+        long numberBinary = binary;
+
+        if (numberBinary < 0) {
+            return (-1);
+        }
+
+        numberDecimal = Integer.parseInt(Long.toString(numberBinary) , 2);
+        return (numberDecimal);
     }
 
     /**
@@ -49,7 +83,15 @@ public class HomeTask2 {
      * @return десятичное число
      */
     public static int octalToDecimal(long octal) {
-        return -1;
+        int numberDecimal;
+        long numberOctal = octal;
+
+        if (numberOctal < 0) {
+            return (-1);
+        }
+
+        numberDecimal = Integer.parseInt(Long.toString(numberOctal) , 8);
+        return (numberDecimal);
     }
 
     /**
@@ -59,7 +101,15 @@ public class HomeTask2 {
      * @return десятичное число
      */
     public static int hexToDecimal(long hex) {
-        return -1;
+        int numberDecimal;
+        long numbererHex = hex;
+
+        if (numbererHex < 0) {
+            return (-1);
+        }
+
+        numberDecimal = Integer.parseInt(Long.toString(numbererHex) , 16);
+        return (numberDecimal);
     }
 
     /**
@@ -70,7 +120,16 @@ public class HomeTask2 {
      * @return двумерный массив
      */
     public static int[][] generateTwoDimensionArray(int rows, int columns) {
-        return null;
+        int i, j;
+        Random r = new Random();
+        int [][] arrayLocal = new int [rows][columns];
+
+        for (i = 0; i < rows; i++) {
+            for (j = 0; j < columns; j++) {
+                arrayLocal [i][j] = r.nextInt();
+            }
+        }
+        return (arrayLocal);
     }
 
     /**
@@ -83,7 +142,21 @@ public class HomeTask2 {
      * @return индекс строки
      */
     public static int findMaxProduct(int[][] input) {
-        return 1;
+        int i, j, maxIndex = 0;
+        long maxProduct = 1, thisProduct;
+        int [][] arrayLocal = input;
+
+        for (i = 0; i < arrayLocal.length; i++) {
+            thisProduct = 1;
+            for (j = 0; j < arrayLocal[i].length; j++) {
+                thisProduct *= arrayLocal[i][j];
+            }
+            if (thisProduct > maxProduct) {
+                maxProduct = thisProduct;
+                maxIndex = (i);
+            }
+        }
+        return (maxIndex);
     }
 
     /**
@@ -93,7 +166,26 @@ public class HomeTask2 {
      * @return массив простых чисел.
      */
     public static int[] getSimple(int n) {
-        return null;
+        int [] arrayDigits = new int [n];
+        int [] simpleArray = new int [20];
+        int i = 2, j =0, k;
+
+        while (i < n) {
+            arrayDigits [i] = i;
+            i++;
+        }
+        while (i<=n) {
+            if (arrayDigits [i] != 0) {
+                simpleArray [j] = arrayDigits [i];
+                j++;
+                k = i;
+                while (k <= n) {
+                    arrayDigits [k] = 0;
+                    k += i;
+                }
+            }
+        }
+        return (simpleArray);
     }
 
     // Рекурсивные методы. Реализовать их нужно с помощью рекурсии.
@@ -105,7 +197,13 @@ public class HomeTask2 {
      * @return сумма
      */
     public static long sum(int n) {
-        return 0;
+        long sumLocal = 0;
+        int i;
+
+        for (i = 1; i <= n; i++) {
+            sumLocal += i;
+        }
+        return (sumLocal);
     }
 
     /**
@@ -116,7 +214,7 @@ public class HomeTask2 {
      * @return
      */
     public static int product(int first, int second) {
-        return -1;
+        return (first * second);
     }
 
 }
